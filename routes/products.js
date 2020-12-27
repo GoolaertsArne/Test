@@ -81,8 +81,34 @@ router.post('/delete', (req, res) => {
   })
 })*/
 
+//Edit form
+router.get('/edit', (req, res) => {
+  console.log(req.query.name)
+  axios.get(DB_URL + req.query._id)
+  .then(function (response ) {
+    //console.log(JSON.stringify(response.data))
+  res.render("edit.ejs", {product : response.data})
+  })
+  .catch(function(error){
+    console.log(error);
+  })
+})
+
+//Update a product 
+router.post("/edit" , (req, res) => {
+  //console.log(req.body)
+  //console.log(req.body.name)
+  //console.log(req.body._id)
+  axios.put(DB_URL + req.body._id, req.body)
+  .then(response => res.redirect("/"))
+  .catch(error => console.log(error));
+
+})
+
+
+
 module.exports = router;
-//test
+ 
 
 
 

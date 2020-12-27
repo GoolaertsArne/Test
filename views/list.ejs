@@ -19,7 +19,8 @@
         <span><input type='hidden' name='name' value='<%= product.value.name %>'></span>
         <span><input type='hidden' name='id' value='<%= product.value._id %>'></span>
         <span><button type='submit'>Delete</button></span>
-      </form></span><br />
+      </form></span>
+      <button onclick="window.location.href='/products/edit?_id=<%= product.value._id %>'">Edit product</button>
     </li>
   <% }) %>
   </ul>
